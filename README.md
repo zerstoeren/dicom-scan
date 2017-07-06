@@ -11,6 +11,8 @@ DICOM C-language communications generally requires knowledge of the Application 
 Note that despite the common DICOM ports, many DICOM providers mask the ports to something else for security through obscurity purposes.  Also note that the pynetdicom3 library has availability of utilizing UIDs instead
 of actual AET names which is very helpful since most AET are not known and I have not found a known dictionary of them anywhere.
 
+Note:  This has been tested against an actual DICOM device and successfully identified and authenticated to the device with a C-Echo command.
+
 Example:
 
 ```bash
