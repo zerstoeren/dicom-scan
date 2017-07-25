@@ -16,6 +16,12 @@ def dicomscan(server, port, results_file):
     print "Attempting DICOM scan on " + '%s' % server + '\n'
     ts = time.strftime("%Y-%m-%d %H:%M")
     try:
+# Application Entity Title is a DICOM specific field usually required to be known for successful DICOM communication with C-Commands.  The SCU_SOP_UID help to eliminate the need to know
+# that information.  Each C-Command seems to have it's own specific SCU_SOP_UID and the one below is for C-Echo.  Note that if the SCU_SOP_UID does not exist then an AET authentication
+# error message is received which still confirms that it is a DICOM device.
+#
+# Additional research shows that many DICOM vendors like to put web wrapping/UI applications over DICOM in which case a different error message (generally PDU 0x0048) will be provided
+# which is also known to be a DICOM error response for web wrapped DICOM engines.  This is also acknowledgement of a valid DICOM device and we know that it was a web wrapped device.
         ae = AE(scu_sop_class=['1.2.840.10008.1.1'])
         peerassoc = ae.associate(server, port)
         dicom_entry = peerassoc.send_c_echo()
@@ -33,6 +39,10 @@ def dicomscan(server, port, results_file):
             pass
     except:
         try:
+# Web wrapped DICOM devices will also be sent here and generally receive a Connection Timeout or Connection Refused message so we handle that in here with errorcode Exceptions so that
+# we can keep scanning the IP range.
+#
+# If we do not get a DICOM success message above, we send it here to try to identify what it is if we can.
             connector = socket(AF_INET, SOCK_STREAM)
             connector.settimeout(1)
             connector.connect(('%s' % server, port))
