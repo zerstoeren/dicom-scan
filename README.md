@@ -1,4 +1,4 @@
-DICOM-Scan - for identifying medical imaging devices
+BETA DICOM-Scan - for identifying medical imaging devices
 ========
 
 Python-based DICOM scanner -- scans a bunch of computers and tries to determine if its a DICOM medical imaging device.
