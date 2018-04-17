@@ -2,7 +2,7 @@ BETA DICOM-Scan - for identifying medical imaging devices
 ========
 
 Python-based DICOM scanner -- scans a bunch of computers and tries to determine if its a DICOM medical imaging device.
-
+Note... A Video of part 1 of this research can be found here.  https://www.youtube.com/watch?v=40JZXndcvyg&t=6s
 
 Lesson Learned
 ===
