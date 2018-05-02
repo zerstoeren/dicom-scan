@@ -7,7 +7,7 @@ Note... A Video of part 1 of this research can be found here.  https://www.youtu
 Lesson Learned
 ===
 
-DICOM C-language communications generally requires knowledge of the Application Entity Title, but thanks to a library from scaramallion was able to discover that a specific SOP UID could also be used to authenticate.
+DICOM C-language (or DIMSE) communications generally requires knowledge of the Application Entity Title, but thanks to a library from scaramallion was able to discover that a specific SOP UID could also be used to authenticate.
 Note that despite the common DICOM ports, many DICOM providers mask the ports to something else for security through obscurity purposes.  Also note that the pynetdicom3 library has availability of utilizing UIDs instead
 of actual AET names which is very helpful since most AET are not known and I have not found a known dictionary of them anywhere.
 
